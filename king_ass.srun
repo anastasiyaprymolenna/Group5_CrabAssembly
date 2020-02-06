@@ -12,5 +12,5 @@
 #SBATCH --mail-user=aprymole@uoregon.edu
 #SBATCH --mail-type=ALL
 
-../wtdbg2/wtdbg2 -x sq -g 7g -t 40 -i /projects/bgmp/shared/2019_Crab_PacBio/KING/KING_CRAB_RAW.share.fasta -fo Run1/pacbio_king
-../wtdbg2/wtpoa-cns -t 40 -i Run1/pacbio_king.ctg.lay.gz -fo Run1/pacbio_king.ctg.fa
+../wtdbg-2.5_x64_linux/wtdbg2 -x sq -g 7g -t 40 -i /projects/bgmp/shared/2019_Crab_PacBio/KING/KING_CRAB_RAW.share.fasta -fo Run1/pacbio_king
+../wtdbg-2.5_x64_linux/wtpoa-cns -t 40 -i Run1/pacbio_king.ctg.lay.gz -fo Run1/pacbio_king.ctg.fa
