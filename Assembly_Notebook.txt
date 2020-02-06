@@ -8,6 +8,66 @@ https://github.com/ruanjue/wtdbg2
 
   With E. coli, the software took 51 seconds to run on 40 cores the output contig file was 46551 records
 
+Ecoli assembly statistics:
+sbatch script:
+
+```
+#!/bin/bash
+#SBATCH --partition=bgmp        ### Partition (like a queue in PBS)
+#SBATCH --job-name=stats_sh     ### Job Name
+#SBATCH --output=ass_stat.out         ### File in which to store job output
+#SBATCH --error=ass_stat.err          ### File in which to store job error messages
+#SBATCH --time=4-23:00:00       ### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1               ### Number of nodes needed for the job
+#SBATCH --ntasks-per-node=1     ### Number of tasks to be launched per Node
+#SBATCH --account=bgmp      ### Account used for job submission
+#SBATCH --cpus-per-task=1
+
+ml purge ; ml bbmap/38.16
+
+stats.sh /projects/bgmp/aprymole/CrabAssembly/Ecoli_Assembly/pacbio_ecoli.ctg.fa
+
+```
+
+output:
+
+A	C	G	T	N	IUPAC	Other	GC	GC_stdev
+0.2463	0.2541	0.2536	0.2460	0.0000	0.0000	0.0000	0.5077	0.0265
+
+Main genome scaffold total:         	4
+Main genome contig total:           	4
+Main genome scaffold sequence total:	4.655 MB
+Main genome contig sequence total:  	4.655 MB  	0.000% gap
+Main genome scaffold N/L50:         	1/4.635 MB
+Main genome contig N/L50:           	1/4.635 MB
+Main genome scaffold N/L90:         	1/4.635 MB
+Main genome contig N/L90:           	1/4.635 MB
+Max scaffold length:                	4.635 MB
+Max contig length:                  	4.635 MB
+Number of scaffolds > 50 KB:        	1
+% main genome in scaffolds > 50 KB: 	99.58%
+
+
+Minimum 	Number        	Number        	Total         	Total         	Scaffold
+Scaffold	of            	of            	Scaffold      	Contig        	Contig  
+Length  	Scaffolds     	Contigs       	Length        	Length        	Coverage
+--------	--------------	--------------	--------------	--------------	--------
+    All 	             4	             4	     4,654,502	     4,654,502	 100.00%
+ 2.5 KB 	             4	             4	     4,654,502	     4,654,502	 100.00%
+   5 KB 	             3	             3	     4,649,541	     4,649,541	 100.00%
+  10 KB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+  25 KB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+  50 KB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+ 100 KB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+ 250 KB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+ 500 KB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+   1 MB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+ 2.5 MB 	             1	             1	     4,635,049	     4,635,049	 100.00%
+
+
+
+
+
 sbatch used for King crab as follows:
 
 ```
@@ -41,3 +101,4 @@ Note*
 -fo prefix option also works if you want to specify a directory to be outputted to
   for example -fo path/prefix will retain only the prefix for future files to be accessed by in the proper paths
   
+
